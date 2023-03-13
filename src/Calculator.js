@@ -14,7 +14,6 @@ const Calculator = () => {
     }
   };
 
-  console.log(display);
   const handleOperator = operator => {
     setPrev(parseFloat(display));
     setOperand(operator);
@@ -48,7 +47,7 @@ const Calculator = () => {
   };
 
   const handleDecimal = () => {
-    if (!display.includes('.')) {
+    if (!display.toString().includes('.')) {
       setDisplay(display + '.');
     }
   };
@@ -113,7 +112,9 @@ const Calculator = () => {
         <button className=' w-48 h-24 bg-gray-200 border border-l-0 border-gray-300' onClick={() => handleNumberButtons(0)}>
           0
         </button>
-        <button className='w-24 h-24 bg-gray-200 border border-gray-300'>.</button>
+        <button className='w-24 h-24 bg-gray-200 border border-gray-300' onClick={handleDecimal}>
+          .
+        </button>
         <button className='w-24 h-24 bg-yellow-500 border border-r-0 border-gray-300'>=</button>
       </div>
     </div>
