@@ -1,4 +1,10 @@
+import { useState } from 'react';
+
 const Calculator = () => {
+  const [display, setDisplay] = useState('0');
+  const [operand, setOperand] = useState(null);
+  const [prevValue, setPrevValue] = useState(null);
+
   return (
     <div className='mt-10 w-96 shadow-xl'>
       <div className='h-16 bg-gray-500'></div>
