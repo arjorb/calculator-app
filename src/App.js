@@ -1,5 +1,11 @@
+import Calculator from './Calculator';
+
 const App = () => {
-  return <h1 className='text-3xl text-[#01826a] font-bold flex justify-center'>Setting up the environment</h1>;
+  return (
+    <div className='flex justify-center'>
+      <Calculator />
+    </div>
+  );
 };
 
 export default App;
