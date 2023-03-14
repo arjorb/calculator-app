@@ -37,6 +37,9 @@ const Calculator = () => {
       case '/':
         result = prev / current;
         break;
+      case '%':
+        result = prev % current;
+        break;
       default:
         result = current;
     }
@@ -49,6 +52,14 @@ const Calculator = () => {
   const handleDecimal = () => {
     if (!display.toString().includes('.')) {
       setDisplay(display + '.');
+    }
+  };
+
+  const handleSign = () => {
+    if (display < '0') {
+      setDisplay(Math.abs(display));
+    } else {
+      setDisplay(-display);
     }
   };
 
@@ -68,7 +79,9 @@ const Calculator = () => {
         <button className='w-24 h-24 bg-gray-200 border border-l-0 border-gray-300' onClick={handleClear}>
           AC
         </button>
-        <button className='w-24 h-24 bg-gray-200 border border-gray-300'>+/-</button>
+        <button className='w-24 h-24 bg-gray-200 border border-gray-300' onClick={handleSign}>
+          +/-
+        </button>
         <button className='w-24 h-24 bg-gray-200 border border-gray-300'>%</button>
         <button className='w-24 h-24 bg-yellow-500 border border-r-0 border-gray-300'>/</button>
       </div>
