@@ -4,22 +4,24 @@ const Calculator = () => {
   const [display, setDisplay] = useState('0');
   const [operand, setOperand] = useState(null);
   const [prev, setPrev] = useState(null);
+  const [track, setTrack] = useState(false);
 
   const handleNumberButtons = number => {
-    if (display === '0' || operand !== null) {
+    if (display === '0') {
       setDisplay(number);
     } else {
       let result = display.toString();
-      setDisplay(result + number);
+      setDisplay(track ? number : result + number);
+      setTrack(false);
     }
   };
 
   const handleOperator = operator => {
     setPrev(parseFloat(display));
     setOperand(operator);
-    setDisplay(display);
+    setTrack(true);
   };
-
+  console.log(prev);
   const handleEqual = () => {
     const current = parseFloat(display);
     let result;
