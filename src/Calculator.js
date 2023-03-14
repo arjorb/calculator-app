@@ -6,7 +6,7 @@ const Calculator = () => {
   const [prev, setPrev] = useState(null);
 
   const handleNumberButtons = number => {
-    if (display === '0') {
+    if (display === '0' || operand !== null) {
       setDisplay(number);
     } else {
       let result = display.toString();
@@ -17,7 +17,7 @@ const Calculator = () => {
   const handleOperator = operator => {
     setPrev(parseFloat(display));
     setOperand(operator);
-    setDisplay('0');
+    setDisplay(display);
   };
 
   const handleEqual = () => {
@@ -82,8 +82,12 @@ const Calculator = () => {
         <button className='w-24 h-24 bg-gray-200 border border-gray-300' onClick={handleSign}>
           +/-
         </button>
-        <button className='w-24 h-24 bg-gray-200 border border-gray-300'>%</button>
-        <button className='w-24 h-24 bg-yellow-500 border border-r-0 border-gray-300'>/</button>
+        <button className='w-24 h-24 bg-gray-200 border border-gray-300' onClick={() => handleOperator('%')}>
+          %
+        </button>
+        <button className='w-24 h-24 bg-yellow-500 border border-r-0 border-gray-300' onClick={() => handleOperator('/')}>
+          /
+        </button>
       </div>
       <div>
         <button className='w-24 h-24 bg-gray-200 border border-l-0 border-gray-300' onClick={() => handleNumberButtons(7)}>
@@ -95,7 +99,9 @@ const Calculator = () => {
         <button className='w-24 h-24 bg-gray-200 border border-gray-300' onClick={() => handleNumberButtons(9)}>
           9
         </button>
-        <button className='w-24 h-24 bg-yellow-500 border border-r-0 border-gray-300'>x</button>
+        <button className='w-24 h-24 bg-yellow-500 border border-r-0 border-gray-300' onClick={() => handleOperator('*')}>
+          x
+        </button>
       </div>
       <div>
         <button className='w-24 h-24 bg-gray-200 border border-l-0 border-gray-300' onClick={() => handleNumberButtons(4)}>
@@ -107,7 +113,9 @@ const Calculator = () => {
         <button className='w-24 h-24 bg-gray-200 border border-gray-300' onClick={() => handleNumberButtons(6)}>
           6
         </button>
-        <button className='w-24 h-24 bg-yellow-500 border border-r-0 border-gray-300'>-</button>
+        <button className='w-24 h-24 bg-yellow-500 border border-r-0 border-gray-300' onClick={() => handleOperator('-')}>
+          -
+        </button>
       </div>
       <div>
         <button className='w-24 h-24 bg-gray-200 border border-l-0 border-gray-300' onClick={() => handleNumberButtons(1)}>
@@ -119,7 +127,9 @@ const Calculator = () => {
         <button className='w-24 h-24 bg-gray-200 border border-gray-300' onClick={() => handleNumberButtons(3)}>
           3
         </button>
-        <button className='w-24 h-24 bg-yellow-500 border border-r-0 border-gray-300'>+</button>
+        <button className='w-24 h-24 bg-yellow-500 border border-r-0 border-gray-300' onClick={() => handleOperator('+')}>
+          +
+        </button>
       </div>
       <div>
         <button className=' w-48 h-24 bg-gray-200 border border-l-0 border-gray-300' onClick={() => handleNumberButtons(0)}>
@@ -128,7 +138,9 @@ const Calculator = () => {
         <button className='w-24 h-24 bg-gray-200 border border-gray-300' onClick={handleDecimal}>
           .
         </button>
-        <button className='w-24 h-24 bg-yellow-500 border border-r-0 border-gray-300'>=</button>
+        <button className='w-24 h-24 bg-yellow-500 border border-r-0 border-gray-300' onClick={handleEqual}>
+          =
+        </button>
       </div>
     </div>
   );
