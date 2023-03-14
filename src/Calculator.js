@@ -21,7 +21,6 @@ const Calculator = () => {
     setOperand(operator);
     setTrack(true);
   };
-  console.log(prev);
   const handleEqual = () => {
     const current = parseFloat(display);
     let result;
@@ -69,6 +68,7 @@ const Calculator = () => {
     setDisplay('0');
     setOperand(null);
     setPrev(null);
+    setTrack(false);
   };
 
   return (
